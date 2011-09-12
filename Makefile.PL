@@ -1,5 +1,5 @@
-use warnings;
 use strict;
+use warnings;
 use ExtUtils::MakeMaker;
 use POE::Test::Loops;
 
@@ -52,36 +52,13 @@ unless ($ret =~ /^Y$/i) {
 
 print "\n";
 
-### Touch files that will be generated at "make dist" time.
-### ExtUtils::MakeMaker and Module::Build will complain about them if
-### they aren't present now.
-
-open(TOUCH, ">>CHANGES")  and close TOUCH;
-open(TOUCH, ">>META.yml") and close TOUCH;
-
 POE::Test::Loops::generate( 't', [ 'POE::Loop::IO_Async' ], 1 );
 
 WriteMakefile(
   NAME            => 'POE::Loop::IO_Async',
-  AUTHOR          => 'Rocco Caputo <rcaputo@cpan.org>',
+  AUTHOR          => 'Chris Williams <chris@bingosnet.co.uk>',
   ABSTRACT        => 'IO::Async event loop support for POE.',
   VERSION_FROM    => 'lib/POE/Loop/IO_Async.pm',
-  META_ADD        => {
-    resources     => {
-      license     => 'http://dev.perl.org/licenses/',
-      repository  => (
-        'https://poe.svn.sourceforge.net/svnroot/poe/trunk/polo-gtk'
-      ),
-    },
-  },
-  dist            => {
-    COMPRESS      => 'gzip -9f',
-    SUFFIX        => 'gz',
-#    PREOP         => (
-#      'svn-log.perl --tags ^plg- | ' .
-#      '/usr/bin/tee ./$(DISTNAME)-$(VERSION)/CHANGES > ./CHANGES'
-#    ),
-  },
   clean           => { FILES => 't/poe_loop_io_async/*.t t/poe_loop_io_async ' . $marker },
   test            => { TESTS => 't/*.t t/poe_loop_io_async/*.t' },
 
@@ -103,4 +80,3 @@ WriteMakefile(
 );
 
 1;
-

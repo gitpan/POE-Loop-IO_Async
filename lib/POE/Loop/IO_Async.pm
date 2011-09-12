@@ -1,6 +1,6 @@
 package POE::Loop::IO_Async;
 {
-  $POE::Loop::IO_Async::VERSION = '0.002';
+  $POE::Loop::IO_Async::VERSION = '0.004';
 }
 
 #ABSTRACT: IO::Async event loop support for POE
@@ -179,7 +179,7 @@ POE::Loop::IO_Async - IO::Async event loop support for POE
 
 =head1 VERSION
 
-version 0.002
+version 0.004
 
 =head1 SYNOPSIS
 
